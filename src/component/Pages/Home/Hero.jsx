@@ -14,8 +14,9 @@ const Hero = () => {
                     <p className="legend">Legend 1</p>
                 </div>
                 <div>
-                    <img className="w-full " src="https://i.ibb.co/C7Fs2W6/Untitled-design-9.png" />
                     <p className="legend">Legend 2</p>
+                    <img className="w-full " src="https://i.ibb.co/C7Fs2W6/Untitled-design-9.png" />
+
                 </div>
 
             </Carousel>
@@ -24,4 +25,4 @@ const Hero = () => {
     );
 };
 
-export default Hero;
+export default Hero;  
