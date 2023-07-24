@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useLoaderData, useParams } from "react-router-dom";
+import { Link, useLoaderData, useParams } from "react-router-dom";
 
 const CollegeDetails = () => {
 
@@ -12,41 +12,30 @@ const CollegeDetails = () => {
 
     }, [collegedetailsId, collegedetails])
 
-    // useEffect(() => {
-    //     fetch('http://localhost:5000/colleges')
-    //         .then(res => res.json())
-    //         .then(data => console.log(data))
-    // }, []);
-    // console.log(collegedata.collegeName);
-
-    const { id, collegeImage, collegeName, admissionDates, researchHistory, sports, events } = collegedata;
+    const { id, admissionProcess, collegeImage, collegeName, admissionDates, researchHistory, eventDetails, sports, } = collegedata;
 
 
     return (
         <div>
-            {/* <div className="card card-compact w-96 bg-base-100 shadow-xl">
-                <figure><img src={collegeImage} alt="Shoes" /></figure>
-                <div className="card-body">
-                    <h2 className="card-title">{collegeName}</h2>
+
+
+            <div className="card lg:card-side p-10  bg-base-100 shadow w-9/12 m-auto my-20">
+                <figure><img className="w-9/12" src={collegeImage} alt="Album" /></figure>
+                <div className="card-body w-full  ">
+                    <h2 className="card-title text-5xl">{collegeName}</h2>
                     <p> <span className="font-bold">Admission Date:</span> {admissionDates}</p>
-                    <p>{researchHistory}</p>
-                    <p>{sports}</p>
-                    <p>{events}</p>
-                    <div className="card-actions justify-end">
-                        <button className="btn btn-primary"><Link to={`/collegedetails/${id}`}
-                        >View Details</Link></button>
-                    </div>
+                    <p> <span className="font-bold">Admission Process:</span> {admissionProcess}</p>
+                    <p><span className="font-bold">Research History:</span> {researchHistory}</p>
+                    <p><span className="font-bold">Sports:</span> {sports}</p>
 
-                </div>
-            </div> */}
+                    {/* <p><span className="font-bold">Events:</span> {events}</p> */}
+                    <p><span className="font-bold">Events Details:</span> {eventDetails}</p>
+                    {/* <p><span className="font-bold">EventDetails:</span> {eventDetails.events[0]}</p>
+                     */}
 
-            <div className="card lg:card-side bg-base-100 shadow-xl">
-                <figure><img src="/images/stock/photo-1494232410401-ad00d5433cfa.jpg" alt="Album" /></figure>
-                <div className="card-body">
-                    <h2 className="card-title">{collegeName}</h2>
-                    <p>Click the button to listen on Spotiwhy app.</p>
+
                     <div className="card-actions justify-end">
-                        <button className="btn btn-primary">Listen</button>
+                        <button className="btn btn-primary"> <Link to={`/apply/${id}`}>Apply</Link> </button>
                     </div>
                 </div>
             </div>

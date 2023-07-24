@@ -8,6 +8,8 @@ import Contact from "../Pages/Contact/Contact";
 import Login from "../Auth/Login/Login";
 import Register from "../Auth/Register/Register";
 import CollegeDetails from "../Pages/Colleges/CollegeDetails";
+import Apply from "../Pages/Admission/Apply";
+// import CollegesList from "../Pages/Admission/CollegesList";
 
 
 const router = createBrowserRouter([
@@ -17,7 +19,8 @@ const router = createBrowserRouter([
         children: [
             {
                 path: '/',
-                element: <Home></Home>
+                element: <Home></Home>,
+                loader: () => fetch('http://localhost:5000/colleges')
             },
             {
                 path: '/login',
@@ -39,7 +42,15 @@ const router = createBrowserRouter([
             },
             {
                 path: '/admission',
-                element: <Admission></Admission>
+                element: <Admission></Admission>,
+                loader: () => fetch('http://localhost:5000/colleges')
+            },
+
+            {
+                path: '/apply/:applyId',
+                element: <Apply></Apply>,
+                loader: () => fetch('http://localhost:5000/colleges')
+
             },
             {
                 path: '/mycollege',

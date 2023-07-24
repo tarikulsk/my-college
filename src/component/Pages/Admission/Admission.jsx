@@ -1,9 +1,17 @@
+import { useLoaderData } from "react-router-dom";
+import CollegesList from "./CollegesList";
 
 
 const Admission = () => {
+    const colleges = useLoaderData();
     return (
         <div>
-            This is Admission Pages.
+            {
+                colleges.map(college => <CollegesList
+                    key={college.id}
+                    college={college}
+                ></CollegesList>)
+            }
 
         </div>
     );
