@@ -54,7 +54,8 @@ const router = createBrowserRouter([
             },
             {
                 path: '/mycollege',
-                element: <MyCollege></MyCollege>
+                element: <MyCollege></MyCollege>,
+                loader: () => fetch('http://localhost:5000/apply')
             },
             {
                 path: "/contact",

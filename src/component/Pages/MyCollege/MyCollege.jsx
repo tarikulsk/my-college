@@ -1,9 +1,21 @@
+import { useLoaderData } from "react-router-dom";
+import AppliedCLG from "./appliedCLG";
 
 
 const MyCollege = () => {
+
+    const colleges = useLoaderData()
+    // console.log(colleges.id);
+
+
     return (
         <div>
-            This is My College Pages.
+            {
+                colleges.map(college => <AppliedCLG
+                    key={college._id}
+                    college={college}
+                ></AppliedCLG>)
+            }
 
         </div>
     );

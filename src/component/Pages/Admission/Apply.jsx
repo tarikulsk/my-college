@@ -38,7 +38,7 @@ const Apply = () => {
         const apply = { collegeName, candidateName, DOB, photo, subject, candidateEmail, phoneNumber, address }
         console.log(apply);
 
-        fetch('http://localhost:5000/addapply', {
+        fetch('http://localhost:5000/apply', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -50,7 +50,7 @@ const Apply = () => {
             .then(data => {
                 console.log(data);
                 if (data.insertedId) {
-                    alert('Hurry !apply Added Successfully!')
+                    alert('Hurry ! apply  Successfully!')
                     form.reset();
                 }
             })
@@ -86,7 +86,7 @@ const Apply = () => {
                         <label className="label">
                             <span className="label-text">Photo</span>
                         </label>
-                        <input type="file" name='photo' className="input input-bordered" />
+                        <input type="url" name='photo' required placeholder="Enter Your Photo's url" className="input input-bordered" />
                     </div>
                     <div className="form-control ">
                         <label className="label">
