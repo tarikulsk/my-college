@@ -6,49 +6,6 @@ import { useLoaderData, useParams } from "react-router-dom";
 const Apply = () => {
 
 
-    const handleSubmit = event => {
-        event.preventDefault();
-        const form = event.target;
-        // const form = event.target.form;n
-        const photoUrl = form.photoUrl.value;
-        const toyName = form.toyName.value;
-        const sellerName = form.sellerName.value;
-        const sellerEmail = form.sellerEmail.value;
-        const subcategory = form.subcategory.value;
-        const price = form.price.value;
-        const rating = form.rating.value;
-        const availableQuantity = form.availableQuantity.value;
-        const description = form.description.value;
-
-        const toy = { photoUrl, toyName, sellerName, sellerEmail, subcategory, price, rating, availableQuantity, description }
-        console.log(toy);
-
-        fetch('http://localhost:5000/addtoy', {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(toy)
-        })
-
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
-                if (data.insertedId) {
-                    alert('Hurry !Toy Added Successfully!')
-                    form.reset();
-                }
-            })
-
-    }
-
-
-
-
-
-
-
-
     const { applyId } = useParams()
     const collegedetails = useLoaderData();
     const [collegedata, setCollegedata] = useState({});
@@ -61,6 +18,46 @@ const Apply = () => {
 
     // console.log(collegedata);
     const { admissionProcess, collegeImage, collegeName } = collegedata;
+
+
+    const handleSubmit = event => {
+        event.preventDefault();
+        const form = event.target;
+
+        const candidateName = form.candidateName.value;
+        const DOB = form.DOB.value;
+        const photo = form.photo.value;
+        const subject = form.subject.value;
+        const candidateEmail = form.candidateEmail.value;
+        const phoneNumber = form.phoneNumber.value;
+        const address = form.address.value;
+
+
+
+        // const apply = { collegeName, photo, candidateName, DOB, subject, candidateEmail, phoneNumber, address }
+        const apply = { collegeName, candidateName, DOB, photo, subject, candidateEmail, phoneNumber, address }
+        console.log(apply);
+
+        fetch('http://localhost:5000/addapply', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(apply)
+        })
+
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.insertedId) {
+                    alert('Hurry !apply Added Successfully!')
+                    form.reset();
+                }
+            })
+
+    }
+
+
 
 
     return (
@@ -80,6 +77,9 @@ const Apply = () => {
 
 
                 <form onSubmit={handleSubmit} >
+                    {/* <input type="text" name="name" id="" /> */}
+
+                    {/* <input type="text" name='candidateName' required placeholder="Tarun Kumar" className="input input-bordered" /> */}
 
                     <h1 name="collegeName" className="text-5xl text-center font-bold pb-10">{collegeName}</h1>
                     <div className="form-control ">
@@ -110,7 +110,7 @@ const Apply = () => {
                         <label className="label">
                             <span className="label-text">Candidate Email</span>
                         </label>
-                        <input type="text" name='candidateEmail' required placeholder="tarunkumar@mail.com " className="input input-bordered" />
+                        <input type="email" name='candidateEmail' required placeholder="tarunkumar@mail.com " className="input input-bordered" />
                     </div>
 
                     <div className="form-control">
